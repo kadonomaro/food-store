@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
+    "contentful": "^10.3.6",
     "pinia": "^2.1.4"
   }
 }
