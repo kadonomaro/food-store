@@ -1,0 +1,9 @@
+$bp-desktop-sm: 992px;
+$bp-desktop-md: 1365px;
+$bp-desktop-lg: 1600px;
+
+@mixin media($point) {
+    @media only screen and (min-width: #{$point}) {
+        @content;
+    }
+}

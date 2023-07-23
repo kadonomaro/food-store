@@ -1,4 +1,4 @@
-import { createClient, ContentfulClientApi, EntrySkeletonType } from "contentful";
+import { createClient, ContentfulClientApi } from "contentful";
 import { mapArrayResponse } from "~/api/mapping";
 
 export class BaseService<T> {

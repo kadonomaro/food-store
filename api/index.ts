@@ -3,11 +3,10 @@ import { ReviewsService } from "~/api/services/reviews";
 
 class ApiService {
     get products() {
-        return new ProductsService("products");
+        return new ProductsService();
     }
-
     get reviews() {
-        return new ReviewsService("reviews");
+        return new ReviewsService();
     }
 }
 
