@@ -5,7 +5,14 @@ const mapReview = (response: any) => {
 };
 
 const mapReviewList = (response: any) => {
-    return mapArrayResponse(response);
+    return mapArrayResponse(response, {
+        id: "sys.id",
+        createdAt: "sys.createdAt",
+        author: "fields.author",
+        date: "fields.date",
+        text: "fields.text",
+        rating: "fields.rating",
+    });
 };
 
 export const reviewsMapper: IMapper = {

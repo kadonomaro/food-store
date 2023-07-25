@@ -5,7 +5,15 @@ const mapProduct = (response: any) => {
 };
 
 const mapProductList = (response: any) => {
-    return mapArrayResponse(response);
+    return mapArrayResponse(response, {
+        id: "sys.id",
+        createdAt: "sys.createdAt",
+        name: "fields.name",
+        text: "fields.text",
+        price: "fields.price",
+        imagePreview: "fields.image_preview.fields.file.url",
+        imageDetail: "fields.image_detail.fields.file.url",
+    });
 };
 
 export const productsMapper: IMapper = {

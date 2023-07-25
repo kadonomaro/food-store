@@ -1,3 +1,5 @@
+import { getDeepObject } from "~/utils";
+
 export interface IMapper {
     getOne: (response: any) => any;
     getAll: (response: any) => any;
@@ -5,12 +7,14 @@ export interface IMapper {
     update: (response: any) => any;
 }
 
-export const mapArrayResponse = (response: any) => {
+export const mapArrayResponse = (response: any, map: any) => {
+    const keys = Object.keys(map);
+
     return response.items.map((item: any) => {
-        return {
-            id: item.sys.id,
-            createdAt: item.sys.createdAt,
-            ...item.fields,
-        };
+        let result: any = {};
+        keys.forEach((key) => {
+            result[key] = getDeepObject(item, map[key]);
+        });
+        return result;
     });
 };
