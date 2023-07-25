@@ -1,8 +1,8 @@
 import { BaseService } from "~/api/services";
 import { productsMapper } from "~/api/mapping/products";
-import { Product } from "~/api/services/products/types";
+import { IProduct } from "~/api/services/products/types";
 
-export class ProductsService extends BaseService<Product> {
+export class ProductsService extends BaseService<IProduct> {
     constructor() {
         super("products", productsMapper);
     }

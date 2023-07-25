@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 import { api } from "~/api";
-import { Review } from "~/api/services/reviews/types";
+import { IReview } from "~/api/services/reviews/types";
 
 type StoreType = {
-    reviews: Review[];
+    reviews: IReview[];
 };
 
 export const useReviewsStore = defineStore("reviews", {

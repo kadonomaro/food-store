@@ -1,4 +1,5 @@
-import { createClient, ContentfulClientApi } from "contentful";
+import { ContentfulClientApi } from "contentful";
+import { contentfulClient } from "~/api/services/client";
 import { IMapper } from "~/api/mapping";
 
 export class BaseService<T> {
@@ -6,13 +7,10 @@ export class BaseService<T> {
     private client: ContentfulClientApi<any>;
     private mapper: IMapper;
 
-    constructor(type: string, mapper: any) {
+    constructor(type: string, mapper: IMapper) {
         this.mapper = mapper;
         this.type = type;
-        this.client = createClient({
-            space: import.meta.env.VITE_CTF_SPACE_ID,
-            accessToken: import.meta.env.VITE_CTF_CDA_ACCESS_TOKEN,
-        });
+        this.client = contentfulClient;
     }
 
     getOne() {}

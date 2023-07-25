@@ -1,9 +1,9 @@
 import { defineStore } from "pinia";
 import { api } from "~/api";
-import { Product } from "~/api/services/products/types";
+import { IProduct } from "~/api/services/products/types";
 
 type StoreType = {
-    products: Product[];
+    products: IProduct[];
 };
 
 export const useProductsStore = defineStore("products", {
