@@ -7,7 +7,6 @@ const mapReview = (response: any) => {
 const mapReviewList = (response: any) => {
     return mapArrayResponse(response, {
         id: "sys.id",
-        createdAt: "sys.createdAt",
         author: "fields.author",
         date: "fields.date",
         text: "fields.text",

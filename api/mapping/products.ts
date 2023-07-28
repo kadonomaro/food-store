@@ -7,10 +7,11 @@ const mapProduct = (response: any) => {
 const mapProductList = (response: any) => {
     return mapArrayResponse(response, {
         id: "sys.id",
-        createdAt: "sys.createdAt",
+        slug: "fields.slug",
         name: "fields.name",
         text: "fields.text",
         price: "fields.price",
+        type: "fields.type",
         imagePreview: "fields.image_preview.fields.file.url",
         imageDetail: "fields.image_detail.fields.file.url",
     });
