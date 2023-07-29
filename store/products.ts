@@ -11,8 +11,8 @@ export const useProductsStore = defineStore("products", {
         products: [],
     }),
     actions: {
-        getProductsList() {
-            return api.products.getAll().then((products) => {
+        getProductsList(query?: object) {
+            return api.products.getAll(query).then((products) => {
                 this.products = products;
                 return products;
             });

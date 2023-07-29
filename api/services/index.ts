@@ -15,7 +15,9 @@ export class BaseService<T> {
 
     getOne() {}
 
-    getAll(): Promise<T[]> {
-        return this.client.getEntries({ content_type: this.type }).then(this.mapper.getAll);
+    getAll(query?: object): Promise<T[]> {
+        return this.client
+            .getEntries({ content_type: this.type, ...query })
+            .then(this.mapper.getAll);
     }
 }

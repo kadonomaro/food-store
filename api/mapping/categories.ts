@@ -10,7 +10,7 @@ const mapCategoriesList = (response: any) => {
         name: "fields.name",
         code: "fields.code",
         sort: "fields.sort",
-        // image: "fields.image.fields.file.url",
+        image: "fields.image.fields.file.url",
     });
 };
 
