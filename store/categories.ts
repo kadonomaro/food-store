@@ -11,8 +11,8 @@ export const useCategoriesStore = defineStore("categories", {
         categories: [],
     }),
     actions: {
-        getCategoriesList() {
-            return api.categories.getAll().then((categories) => {
+        getCategoriesList(query?: object) {
+            return api.categories.getAll(query).then((categories) => {
                 this.categories = categories;
                 return categories;
             });

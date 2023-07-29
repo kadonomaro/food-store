@@ -1,40 +1,80 @@
 <script setup lang="ts">
     import { storeToRefs } from "pinia";
     import { useProductsStore } from "~/store/products";
+    import { useMeta } from "~/composables/useMeta";
+    import { useReviewsStore } from "~/store/reviews";
 
     const { products } = storeToRefs(useProductsStore());
+    const { reviews } = storeToRefs(useReviewsStore());
     const { getProductsList } = useProductsStore();
+    const { getReviewsList } = useReviewsStore();
 
-    const isLoading = ref(false);
+    const isLoadingProducts = ref(false);
+    const isLoadingReviews = ref(false);
+
+    const onSelectCategory = async (categoryId: string) => {
+        isLoadingProducts.value = true;
+        const query = categoryId ? { "fields.category.sys.id[in]": categoryId } : null;
+        await getProductsList(query);
+        isLoadingProducts.value = false;
+    };
 
     onServerPrefetch(() => {
-        return getProductsList();
+        return Promise.all([getProductsList(), getReviewsList({ limit: 10 })]);
     });
 
-    onMounted(() => {
+    onMounted(async () => {
         if (products.value.length === 0) {
-            isLoading.value = true;
-            getProductsList().then(() => {
-                isLoading.value = false;
-            });
+            isLoadingProducts.value = true;
+            await getProductsList();
+            isLoadingProducts.value = false;
+        }
+
+        if (reviews.value.length === 0) {
+            isLoadingReviews.value = true;
+            await getReviewsList({ limit: 10 });
+            isLoadingReviews.value = false;
         }
     });
+
+    useMeta("home");
 </script>
 
 <template>
     <div class="home-page">
-        <h1>Home page</h1>
-
-        <h2 v-if="isLoading">Loading...</h2>
-        <NuxtLink :to="{ name: 'reviews' }">Reviews</NuxtLink>
-
-        <div v-for="product in products" :key="product.id" class="product">
-            <div>
-                <b>{{ product.name }}</b>
+        <div class="container">
+            <div class="home-page__categories">
+                <home-categories
+                    :is-disabled="isLoadingProducts"
+                    @on-select="onSelectCategory"
+                ></home-categories>
             </div>
-            <div>{{ product.createdAt }}</div>
+
+            <div class="home-page__catalog">
+                <product-catalog
+                    :products="products"
+                    :is-loading="isLoadingProducts"
+                ></product-catalog>
+            </div>
+
+            <div class="home-page__reviews">
+                <home-reviews :reviews="reviews" :is-loading="isLoadingReviews"></home-reviews>
+            </div>
         </div>
     </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+    .home-page {
+        background-color: var(--primary-background);
+        @include media($bp-desktop-sm) {
+        }
+    }
+
+    .home-page__catalog {
+        margin-bottom: 50px;
+        @include media($bp-desktop-sm) {
+            margin-bottom: 100px;
+        }
+    }
+</style>

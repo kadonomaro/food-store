@@ -11,8 +11,8 @@ export const useReviewsStore = defineStore("reviews", {
         reviews: [],
     }),
     actions: {
-        getReviewsList() {
-            return api.reviews.getAll().then((reviews) => {
+        getReviewsList(query?: object) {
+            return api.reviews.getAll(query).then((reviews) => {
                 this.reviews = reviews;
                 return reviews;
             });

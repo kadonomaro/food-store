@@ -1,14 +1,13 @@
-export enum Page {
-    home = "home",
-    reviews = "reviews",
+interface Meta {
+    [key: string]: any;
 }
 
-export const meta = {
-    [Page.home]: {
+export const meta: Meta = {
+    home: {
         title: "Home page title",
         description: "Home page description",
     },
-    [Page.reviews]: {
+    reviews: {
         title: "Reviews page title",
         description: "Reviews page description",
     },

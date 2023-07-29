@@ -1,0 +1,7 @@
+@mixin center-absolute($value) {
+    position: absolute;
+    top: #{$value};
+    bottom: #{$value};
+    left: #{$value};
+    right: #{$value};
+}

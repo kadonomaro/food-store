@@ -20,16 +20,19 @@
         emit("on-select", id);
     };
 
+    const getCategoriesWithQuery = () => {
+        return getCategoriesList({ order: "fields.sort" });
+    };
+
     onServerPrefetch(() => {
-        return getCategoriesList();
+        return getCategoriesWithQuery();
     });
 
-    onMounted(() => {
+    onMounted(async () => {
         if (categories.value.length === 0) {
             isLoading.value = true;
-            getCategoriesList().then(() => {
-                isLoading.value = false;
-            });
+            await getCategoriesWithQuery();
+            isLoading.value = false;
         }
     });
 </script>
@@ -38,6 +41,16 @@
     <div class="home-categories">
         <h1 class="home-categories__title page-title">Популярные категории</h1>
         <div class="home-categories__list">
+            <button
+                class="home-categories__button"
+                :class="{ 'is-active': categoryId === '' }"
+                :disabled="isDisabled"
+                @click="onSelectCategory('')"
+            >
+                <img src="" alt="" />
+                Все товары
+            </button>
+
             <button
                 v-for="category in categories"
                 :key="category.id"
