@@ -1,7 +1,13 @@
 @mixin center-absolute($value) {
     position: absolute;
-    top: #{$value};
-    bottom: #{$value};
-    left: #{$value};
-    right: #{$value};
+    top: $value;
+    bottom: $value;
+    left: $value;
+    right: $value;
+}
+
+@mixin sticky($top: 0) {
+    position: sticky;
+    position: -webkit-sticky;
+    top: $top;
 }

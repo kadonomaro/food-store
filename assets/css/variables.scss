@@ -3,9 +3,17 @@
 
     --primary-color: #25323f;
     --primary-color--hover: #3f8fd2;
+    --secondary-color: #acbccc;
     --success-color: #3ac900;
     --danger-color: #e03c3c;
 
     --primary-background: #f4f7fa;
     --primary-border: #bbbcb6;
+
+    --border-radius--sm: 12px;
+    --border-radius--md: 15px;
+    @include media($bp-desktop-sm) {
+        --border-radius--sm: 18px;
+        --border-radius--md: 25px;
+    }
 }

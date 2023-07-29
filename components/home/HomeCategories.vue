@@ -86,15 +86,18 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin: 0 -5px;
         }
     }
 
     .home-categories__button {
         @include media($bp-desktop-sm) {
+            flex-grow: 1;
+            margin: 0 5px;
             padding: 12px 20px;
             color: var(--primary-color);
             font-size: 18px;
-            font-weight: 500;
+            font-weight: 600;
             line-height: 22px;
             letter-spacing: 0.03em;
             text-align: center;

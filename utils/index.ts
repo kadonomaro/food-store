@@ -11,3 +11,11 @@ export const getDeepObject = (obj: any, path: string) => {
     }
     return result;
 };
+
+export const formatDate = (date: string) => {
+    return new Date(date).toLocaleDateString("ru-RU", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+    });
+};

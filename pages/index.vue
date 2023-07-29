@@ -20,7 +20,7 @@
     };
 
     onServerPrefetch(() => {
-        return Promise.all([getProductsList(), getReviewsList({ limit: 10 })]);
+        return Promise.all([getProductsList(), getReviewsList()]);
     });
 
     onMounted(async () => {
@@ -32,7 +32,7 @@
 
         if (reviews.value.length === 0) {
             isLoadingReviews.value = true;
-            await getReviewsList({ limit: 10 });
+            await getReviewsList();
             isLoadingReviews.value = false;
         }
     });
@@ -42,22 +42,26 @@
 
 <template>
     <div class="home-page">
-        <div class="container">
-            <div class="home-page__categories">
+        <div class="home-page__categories">
+            <div class="container">
                 <home-categories
                     :is-disabled="isLoadingProducts"
                     @on-select="onSelectCategory"
                 ></home-categories>
             </div>
+        </div>
 
-            <div class="home-page__catalog">
+        <div class="home-page__catalog">
+            <div class="container">
                 <product-catalog
                     :products="products"
                     :is-loading="isLoadingProducts"
                 ></product-catalog>
             </div>
+        </div>
 
-            <div class="home-page__reviews">
+        <div class="home-page__reviews">
+            <div class="container">
                 <home-reviews :reviews="reviews" :is-loading="isLoadingReviews"></home-reviews>
             </div>
         </div>
@@ -71,10 +75,7 @@
         }
     }
 
-    .home-page__catalog {
-        margin-bottom: 50px;
-        @include media($bp-desktop-sm) {
-            margin-bottom: 100px;
-        }
+    .home-page__reviews {
+        background-color: #fff;
     }
 </style>
