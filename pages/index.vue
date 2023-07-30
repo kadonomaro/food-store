@@ -14,7 +14,7 @@
 
     const onSelectCategory = async (categoryId: string) => {
         isLoadingProducts.value = true;
-        const query = categoryId ? { "fields.category.sys.id[in]": categoryId } : null;
+        const query = categoryId ? { "fields.category.sys.id[in]": categoryId } : undefined;
         await getProductsList(query);
         isLoadingProducts.value = false;
     };

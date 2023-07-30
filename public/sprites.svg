@@ -1,0 +1,8 @@
+<svg width="0" height="0" class="hidden">
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="star">
+        <path d="m12 0 3.033 7.826 8.38.466-6.506 5.303 2.146 8.114L12 17.16 4.947 21.71l2.146-8.114L.587 8.292l8.38-.466L12 0Z"></path>
+    </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="arrow">
+        <path d="M16.99 2.25a1.6 1.6 0 0 0-2.33-.04L5 12.11l9.46 9.69a1.66 1.66 0 1 0 2.38-2.33L9.59 12.1l7.37-7.67A1.6 1.6 0 0 0 17 2.25z"></path>
+    </symbol>
+</svg>

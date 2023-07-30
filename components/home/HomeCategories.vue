@@ -68,9 +68,9 @@
 
 <style lang="scss">
     .home-categories {
-        padding: 24px 0 30px;
+        padding: 20px 0 30px;
         @include media($bp-desktop-sm) {
-            padding: 48px 0 60px;
+            padding: 40px 0 60px;
         }
     }
 

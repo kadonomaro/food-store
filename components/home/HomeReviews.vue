@@ -7,21 +7,47 @@
     };
 
     defineProps<Props>();
+
+    const swiperOptions = {
+        991: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+            navigation: {
+                prevEl: ".js-reviews-slider-prev",
+                nextEl: ".js-reviews-slider-next",
+            },
+        },
+    };
 </script>
 
 <template>
     <div class="home-reviews">
-        <h2 class="home-reviews__title page-title">Отзывы</h2>
-
-        <div class="home-reviews__list">
-            <div
-                v-for="review in reviews.slice(0, 4)"
-                :key="review.id"
-                class="home-reviews__item"
-            >
-                <reviews-card :review="review"></reviews-card>
+        <div class="home-reviews__header">
+            <h2 class="home-reviews__title page-title">Отзывы</h2>
+            <div class="home-reviews__navigation">
+                <button class="home-reviews__prev js-reviews-slider-prev">
+                    <the-icon name="arrow"></the-icon>
+                </button>
+                <button class="home-reviews__next js-reviews-slider-next">
+                    <the-icon name="arrow"></the-icon>
+                </button>
             </div>
         </div>
+
+        <swiper
+            class="home-reviews__slider"
+            :modules="[SwiperNavigation]"
+            :slides-per-view="1.3"
+            :space-between="10"
+            :grab-cursor="true"
+            :breakpoints="swiperOptions"
+        >
+            <swiper-slide v-for="review in reviews.slice(0, 10)" :key="review.id">
+                <div class="home-reviews__item">
+                    <reviews-card :review="review"></reviews-card>
+                </div>
+            </swiper-slide>
+        </swiper>
 
         <nuxt-link :to="{ name: 'reviews' }" class="home-reviews__link">Все отзывы</nuxt-link>
     </div>
@@ -29,10 +55,16 @@
 
 <style lang="scss">
     .home-reviews {
-        padding: 24px 0 30px;
+        padding: 20px 0 30px;
         @include media($bp-desktop-sm) {
-            padding: 48px 0 60px;
+            padding: 40px 0 60px;
         }
+    }
+
+    .home-reviews__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
     .home-reviews__title {
@@ -42,22 +74,20 @@
         }
     }
 
-    .home-reviews__list {
-        margin: 0 -5px;
+    .home-reviews__slider {
+        margin: 0 -10px 15px;
+        padding: 0 10px;
+        .swiper-slide {
+            height: auto;
+        }
         @include media($bp-desktop-sm) {
-            display: flex;
-            flex-wrap: wrap;
-            margin: 0 -10px;
+            margin: 0 0 30px;
+            padding: 0;
         }
     }
 
     .home-reviews__item {
-        padding: 0 5px 10px;
-        @include media($bp-desktop-sm) {
-            flex-basis: 25%;
-            max-width: 25%;
-            padding: 0 10px 20px;
-        }
+        height: 100%;
     }
 
     .home-reviews__link {
@@ -77,5 +107,40 @@
         transition:
             color 0.2s ease-in,
             background-color 0.2s ease-in;
+    }
+
+    .home-reviews__navigation {
+        display: none;
+        @include media($bp-desktop-sm) {
+            display: flex;
+            margin: 0 -3px;
+        }
+    }
+
+    .home-reviews__prev,
+    .home-reviews__next {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        margin: 0 3px;
+        background-color: var(--primary-background);
+        border-radius: 8px;
+        transition: opacity 0.2s ease-in;
+        &:disabled {
+            opacity: 0.5;
+        }
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: #25323f;
+        }
+    }
+
+    .home-reviews__next {
+        svg {
+            transform: scale(-1);
+        }
     }
 </style>

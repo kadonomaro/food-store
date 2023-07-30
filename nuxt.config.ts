@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
-    modules: ["@pinia/nuxt"],
+    modules: ["@pinia/nuxt", "nuxt-swiper"],
     devtools: { enabled: true },
     typescript: {
         typeCheck: true,
