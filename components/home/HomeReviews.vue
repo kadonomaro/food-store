@@ -26,10 +26,10 @@
             <h2 class="home-reviews__title page-title">Отзывы</h2>
             <div class="home-reviews__navigation">
                 <button class="home-reviews__prev js-reviews-slider-prev">
-                    <the-icon name="arrow"></the-icon>
+                    <base-icon name="arrow"></base-icon>
                 </button>
                 <button class="home-reviews__next js-reviews-slider-next">
-                    <the-icon name="arrow"></the-icon>
+                    <base-icon name="arrow"></base-icon>
                 </button>
             </div>
         </div>
@@ -42,14 +42,12 @@
             :grab-cursor="true"
             :breakpoints="swiperOptions"
         >
-            <swiper-slide v-for="review in reviews.slice(0, 10)" :key="review.id">
+            <swiper-slide v-for="review in reviews" :key="review.id">
                 <div class="home-reviews__item">
                     <reviews-card :review="review"></reviews-card>
                 </div>
             </swiper-slide>
         </swiper>
-
-        <nuxt-link :to="{ name: 'reviews' }" class="home-reviews__link">Все отзывы</nuxt-link>
     </div>
 </template>
 
@@ -88,25 +86,6 @@
 
     .home-reviews__item {
         height: 100%;
-    }
-
-    .home-reviews__link {
-        display: block;
-        max-width: 240px;
-        margin: 0 auto;
-        padding: 12px 20px;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 22px;
-        letter-spacing: 0.03em;
-        text-align: center;
-        text-decoration: none;
-        background-color: var(--primary-color--hover);
-        border-radius: 12px;
-        transition:
-            color 0.2s ease-in,
-            background-color 0.2s ease-in;
     }
 
     .home-reviews__navigation {

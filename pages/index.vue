@@ -20,7 +20,7 @@
     };
 
     onServerPrefetch(() => {
-        return Promise.all([getProductsList(), getReviewsList()]);
+        return Promise.all([getProductsList(), getReviewsList({ order: "-fields.date" })]);
     });
 
     onMounted(async () => {
@@ -42,6 +42,12 @@
 
 <template>
     <div class="home-page">
+        <div class="home-page__banner">
+            <div class="container">
+                <home-banner></home-banner>
+            </div>
+        </div>
+
         <div class="home-page__categories">
             <div class="container">
                 <home-categories
@@ -72,6 +78,7 @@
     .home-page {
         background-color: var(--primary-background);
         @include media($bp-desktop-sm) {
+            padding-top: 30px;
         }
     }
 

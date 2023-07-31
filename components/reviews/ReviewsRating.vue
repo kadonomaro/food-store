@@ -1,4 +1,6 @@
 <script setup lang="ts">
+    import BaseIcon from "~/components/BaseIcon.vue";
+
     type Props = {
         rating: number;
     };
@@ -8,13 +10,13 @@
 
 <template>
     <div class="reviews-rating">
-        <the-icon
+        <base-icon
             v-for="index in 5"
             :key="index"
             class="reviews-rating__icon"
             :class="{ 'is-active': index <= rating }"
             name="star"
-        ></the-icon>
+        ></base-icon>
     </div>
 </template>
 

@@ -47,7 +47,7 @@
                 :disabled="isDisabled"
                 @click="onSelectCategory('')"
             >
-                <img src="" alt="" />
+                <img class="home-categories__image" src="/assets/home/categories/all.png" alt="" />
                 Все товары
             </button>
 
@@ -59,7 +59,7 @@
                 :disabled="isDisabled"
                 @click="onSelectCategory(category.id)"
             >
-                <img src="" alt="" />
+                <img class="home-categories__image" :src="category.image" alt="" />
                 {{ category.name }}
             </button>
         </div>
@@ -82,41 +82,89 @@
     }
 
     .home-categories__list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 -10px;
+        padding: 0 10px 10px;
+        overflow: auto;
         @include media($bp-desktop-sm) {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin: 0 -5px;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
         }
     }
 
     .home-categories__button {
+        position: relative;
+        padding: 9px 16px;
+        color: var(--primary-color);
+        font-size: 14px;
+        line-height: 18px;
+        font-weight: 600;
+        text-align: center;
+        text-decoration: none;
+        white-space: nowrap;
+        background-color: transparent;
+        border-radius: 8px;
+        transition:
+            color 0.2s ease-in,
+            background-color 0.2s ease-in;
+        &:not(:last-child) {
+            margin-right: 6px;
+        }
+        &:disabled {
+            pointer-events: none;
+        }
+        &.is-active {
+            color: var(--primary-color--hover);
+            background-color: #fff;
+            cursor: auto;
+        }
         @include media($bp-desktop-sm) {
             flex-grow: 1;
-            margin: 0 5px;
-            padding: 12px 20px;
-            color: var(--primary-color);
+            padding: 15px;
             font-size: 18px;
-            font-weight: 600;
             line-height: 22px;
             letter-spacing: 0.03em;
-            text-align: center;
-            text-decoration: none;
-            background-color: #fff;
             border-radius: 12px;
-            transition:
-                color 0.2s ease-in,
-                background-color 0.2s ease-in;
-            &:hover {
-                color: var(--primary-color--hover);
+            &:not(:last-child) {
+                margin-right: 10px;
             }
-            &:disabled {
-                pointer-events: none;
+            &:hover:not(.is-active) {
+                &::before {
+                    opacity: 1;
+                }
+                .home-categories__image {
+                    transform: translateY(-5px);
+                }
             }
-            &.is-active {
-                color: #fff;
-                background-color: var(--primary-color--hover);
+            &::before {
+                content: "";
+                position: absolute;
+                top: 65px;
+                left: calc(50% - 20px);
+                width: 40px;
+                height: 8px;
+                background-color: rgba(#000, 0.2);
+                border-radius: 50%;
+                opacity: 0;
+                transition:
+                    opacity 0.2s ease-in,
+                    transform 0.2s ease-in;
             }
+        }
+    }
+
+    .home-categories__image {
+        width: 30px;
+        height: 30px;
+        margin: 0 auto 10px;
+        @include media($bp-desktop-sm) {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 15px;
+            transition: transform 0.2s ease-in;
         }
     }
 </style>

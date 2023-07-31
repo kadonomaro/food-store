@@ -10,8 +10,4 @@ export const meta: Meta = {
         title: "Food Store — доставка еды на дом 24/7 — заказать бесплатную доставку еды круглосуточно",
         description,
     },
-    reviews: {
-        title: "Food Store — отзывы наших клиентов",
-        description,
-    },
 };
