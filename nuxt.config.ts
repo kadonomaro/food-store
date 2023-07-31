@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 
 export default defineNuxtConfig({
+    components: [{ path: "~/components", pathPrefix: false }],
     modules: ["@pinia/nuxt", "nuxt-swiper"],
     devtools: { enabled: true },
     typescript: {
@@ -11,8 +12,7 @@ export default defineNuxtConfig({
         css: {
             preprocessorOptions: {
                 scss: {
-                    additionalData:
-                        '@import "~/assets/css/_media.scss"; @import "~/assets/css/_mixins.scss";',
+                    additionalData: '@import "~/assets/css/_media.scss"; @import "~/assets/css/_mixins.scss";',
                 },
             },
         },

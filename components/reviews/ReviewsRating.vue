@@ -1,6 +1,4 @@
 <script setup lang="ts">
-    import BaseIcon from "~/components/BaseIcon.vue";
-
     type Props = {
         rating: number;
     };
