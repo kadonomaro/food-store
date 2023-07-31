@@ -85,7 +85,7 @@
     }
 
     .product-card__name {
-        color: var(--primary-color);
+        color: var(--primary-text);
         font-size: 16px;
         font-weight: 500;
         line-height: 20px;

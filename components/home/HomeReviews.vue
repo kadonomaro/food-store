@@ -21,7 +21,7 @@
 </script>
 
 <template>
-    <div class="home-reviews">
+    <div id="reviews" class="home-reviews">
         <div class="home-reviews__header">
             <h2 class="home-reviews__title page-title">Отзывы</h2>
             <div class="home-reviews__navigation">

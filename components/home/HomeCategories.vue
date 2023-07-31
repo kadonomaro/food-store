@@ -38,8 +38,7 @@
 </script>
 
 <template>
-    <div class="home-categories">
-        <h1 class="home-categories__title page-title">Популярные категории</h1>
+    <div id="catalog" class="home-categories">
         <div class="home-categories__list">
             <button
                 class="home-categories__button"
@@ -68,16 +67,9 @@
 
 <style lang="scss">
     .home-categories {
-        padding: 20px 0 30px;
+        padding: 30px 0 20px;
         @include media($bp-desktop-sm) {
-            padding: 40px 0 60px;
-        }
-    }
-
-    .home-categories__title {
-        margin-bottom: 15px;
-        @include media($bp-desktop-sm) {
-            margin-bottom: 30px;
+            padding: 60px 0 40px;
         }
     }
 
@@ -98,7 +90,7 @@
     .home-categories__button {
         position: relative;
         padding: 9px 16px;
-        color: var(--primary-color);
+        color: var(--primary-text);
         font-size: 14px;
         line-height: 18px;
         font-weight: 600;
@@ -107,9 +99,7 @@
         white-space: nowrap;
         background-color: transparent;
         border-radius: 8px;
-        transition:
-            color 0.2s ease-in,
-            background-color 0.2s ease-in;
+        transition: background-color 0.2s ease-in;
         &:not(:last-child) {
             margin-right: 6px;
         }
@@ -117,7 +107,6 @@
             pointer-events: none;
         }
         &.is-active {
-            color: var(--primary-color--hover);
             background-color: #fff;
             cursor: auto;
         }

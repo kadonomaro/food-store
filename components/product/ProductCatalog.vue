@@ -11,6 +11,7 @@
 
 <template>
     <div class="product-catalog">
+        <h1 class="product-catalog__title page-title">Каталог</h1>
         <div class="product-catalog__list">
             <template v-if="isLoading && products.length === 0">
                 <div v-for="index in 4" :key="index" class="product-catalog__loader"></div>
@@ -21,11 +22,7 @@
             </div>
 
             <template v-else>
-                <div
-                    v-for="product in products"
-                    :key="product.id"
-                    class="product-catalog__item"
-                >
+                <div v-for="product in products" :key="product.id" class="product-catalog__item">
                     <product-card :product="product"></product-card>
                 </div>
             </template>

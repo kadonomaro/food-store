@@ -50,19 +50,13 @@
 
         <div class="home-page__categories">
             <div class="container">
-                <home-categories
-                    :is-disabled="isLoadingProducts"
-                    @on-select="onSelectCategory"
-                ></home-categories>
+                <home-categories :is-disabled="isLoadingProducts" @on-select="onSelectCategory"></home-categories>
             </div>
         </div>
 
         <div class="home-page__catalog">
             <div class="container">
-                <product-catalog
-                    :products="products"
-                    :is-loading="isLoadingProducts"
-                ></product-catalog>
+                <product-catalog :products="products" :is-loading="isLoadingProducts"></product-catalog>
             </div>
         </div>
 
@@ -78,7 +72,7 @@
     .home-page {
         background-color: var(--primary-background);
         @include media($bp-desktop-sm) {
-            padding-top: 30px;
+            padding-top: 40px;
         }
     }
 
