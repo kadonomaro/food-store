@@ -10,7 +10,7 @@
 
 <template>
     <svg class="base-icon" :class="[`icon-${name}`]" xmlns="http://www.w3.org/2000/svg">
-        <use :xlink:href="`/sprites.svg#${name}`" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+        <use :xlink:href="`/assets/sprites.svg#${name}`" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
     </svg>
 </template>
 
