@@ -1,17 +1,19 @@
-import { mapArrayResponse, IMapper } from "~/api/mapping/index";
+import { mapObjectResponse, mapArrayResponse, IMapper } from "~/api/mapping/index";
+
+const categoryMap = {
+    id: "sys.id",
+    name: "fields.name",
+    code: "fields.code",
+    sort: "fields.sort",
+    image: "fields.image.fields.file.url",
+};
 
 const mapCategory = (response: any) => {
-    return response;
+    return mapObjectResponse(response, categoryMap);
 };
 
 const mapCategoriesList = (response: any) => {
-    return mapArrayResponse(response, {
-        id: "sys.id",
-        name: "fields.name",
-        code: "fields.code",
-        sort: "fields.sort",
-        image: "fields.image.fields.file.url",
-    });
+    return mapArrayResponse(response, categoryMap);
 };
 
 export const categoriesMapper: IMapper = {

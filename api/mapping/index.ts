@@ -7,6 +7,15 @@ export interface IMapper {
     update: (response: any) => any;
 }
 
+export const mapObjectResponse = (response: any, map: any) => {
+    const keys = Object.keys(map);
+    let result: any = {};
+    keys.forEach((key) => {
+        result[key] = getDeepObject(response, map[key]);
+    });
+    return result;
+};
+
 export const mapArrayResponse = (response: any, map: any) => {
     const keys = Object.keys(map);
 

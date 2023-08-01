@@ -1,17 +1,19 @@
-import { mapArrayResponse, IMapper } from "~/api/mapping/index";
+import { mapObjectResponse, mapArrayResponse, IMapper } from "~/api/mapping/index";
+
+const reviewMap = {
+    id: "sys.id",
+    author: "fields.author",
+    date: "fields.date",
+    text: "fields.text",
+    rating: "fields.rating",
+};
 
 const mapReview = (response: any) => {
-    return response;
+    return mapObjectResponse(response, reviewMap);
 };
 
 const mapReviewList = (response: any) => {
-    return mapArrayResponse(response, {
-        id: "sys.id",
-        author: "fields.author",
-        date: "fields.date",
-        text: "fields.text",
-        rating: "fields.rating",
-    });
+    return mapArrayResponse(response, reviewMap);
 };
 
 export const reviewsMapper: IMapper = {
