@@ -131,7 +131,7 @@
             &::before {
                 content: "";
                 position: absolute;
-                top: 65px;
+                top: 75px;
                 left: calc(50% - 20px);
                 width: 40px;
                 height: 8px;
@@ -146,12 +146,12 @@
     }
 
     .home-categories__image {
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         margin: 0 auto 10px;
         @include media($bp-desktop-sm) {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             margin-bottom: 15px;
             transition: transform 0.2s ease-in;
         }

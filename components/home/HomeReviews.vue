@@ -73,13 +73,13 @@
     }
 
     .home-reviews__slider {
-        margin: 0 -10px 15px;
+        margin: 0 -10px;
         padding: 0 10px;
         .swiper-slide {
             height: auto;
         }
         @include media($bp-desktop-sm) {
-            margin: 0 0 30px;
+            margin: 0;
             padding: 0;
         }
     }

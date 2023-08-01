@@ -1,8 +1,7 @@
 <script setup lang="ts">
     import { storeToRefs } from "pinia";
-    import { useProductsStore } from "~/store/products";
+    import { useProductsStore, useReviewsStore } from "~/store";
     import { useMeta } from "~/composables/useMeta";
-    import { useReviewsStore } from "~/store/reviews";
 
     const { products } = storeToRefs(useProductsStore());
     const { reviews } = storeToRefs(useReviewsStore());
