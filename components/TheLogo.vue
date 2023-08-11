@@ -14,7 +14,7 @@
     .the-logo {
         position: relative;
         display: block;
-        height: 60px;
+        height: 50px;
         img {
             height: 100%;
         }

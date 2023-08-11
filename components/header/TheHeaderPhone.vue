@@ -20,7 +20,7 @@
         font-weight: 600;
         text-decoration: none;
         @include media($bp-desktop-sm) {
-            font-size: 20px;
+            font-size: 18px;
             line-height: 24px;
         }
     }
@@ -29,9 +29,5 @@
         color: var(--secondary-color);
         font-size: 12px;
         line-height: 16px;
-        @include media($bp-desktop-sm) {
-            font-size: 14px;
-            line-height: 18px;
-        }
     }
 </style>

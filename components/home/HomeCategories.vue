@@ -9,14 +9,13 @@
     defineProps<Props>();
     const emit = defineEmits(["on-select"]);
 
-    const { categories } = storeToRefs(useCategoriesStore());
-    const { getCategoriesList } = useCategoriesStore();
+    const { categories, activeCategory } = storeToRefs(useCategoriesStore());
+    const { getCategoriesList, setActiveCategory } = useCategoriesStore();
 
     const isLoading = ref(false);
-    const categoryId = ref("");
 
     const onSelectCategory = (id: string) => {
-        categoryId.value = id;
+        setActiveCategory(id);
         emit("on-select", id);
     };
 
@@ -42,7 +41,7 @@
         <div class="home-categories__list">
             <button
                 class="home-categories__button"
-                :class="{ 'is-active': categoryId === '' }"
+                :class="{ 'is-active': activeCategory === '' }"
                 :disabled="isDisabled"
                 @click="onSelectCategory('')"
             >
@@ -54,7 +53,7 @@
                 v-for="category in categories"
                 :key="category.id"
                 class="home-categories__button"
-                :class="{ 'is-active': categoryId === category.id }"
+                :class="{ 'is-active': activeCategory === category.id }"
                 :disabled="isDisabled"
                 @click="onSelectCategory(category.id)"
             >
@@ -93,7 +92,7 @@
         color: var(--primary-text);
         font-size: 14px;
         line-height: 18px;
-        font-weight: 600;
+        font-weight: 500;
         text-align: center;
         text-decoration: none;
         white-space: nowrap;

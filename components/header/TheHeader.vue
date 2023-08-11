@@ -51,7 +51,4 @@
             margin-right: auto;
         }
     }
-
-    .the-header__phone {
-    }
 </style>
