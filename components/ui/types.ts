@@ -1,1 +1,1 @@
-export type Icon = "star" | "arrow";
+export type Icon = "star" | "arrow" | "close";

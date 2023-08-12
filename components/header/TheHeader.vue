@@ -12,6 +12,10 @@
                     <the-header-navigation></the-header-navigation>
                 </div>
 
+                <div class="the-header__search">
+                    <the-header-search></the-header-search>
+                </div>
+
                 <div class="the-header__phone">
                     <the-header-phone></the-header-phone>
                 </div>
@@ -42,13 +46,21 @@
 
     .the-header__logo {
         @include media($bp-desktop-sm) {
-            margin-right: 100px;
+            margin-right: 60px;
         }
     }
 
     .the-header__navigation {
         @include media($bp-desktop-sm) {
             margin-right: auto;
+        }
+    }
+
+    .the-header__search {
+        @include media($bp-desktop-sm) {
+            margin-right: 60px;
+            width: 100%;
+            max-width: 400px;
         }
     }
 </style>

@@ -5,4 +5,8 @@
     <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="arrow">
         <path d="M16.99 2.25a1.6 1.6 0 0 0-2.33-.04L5 12.11l9.46 9.69a1.66 1.66 0 1 0 2.38-2.33L9.59 12.1l7.37-7.67A1.6 1.6 0 0 0 17 2.25z"></path>
     </symbol>
+    <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" id="close">
+        <rect width="1.99" height="17.91" rx=".99" transform="matrix(-.71068 .70352 -.71068 -.70352 15.14 13.6)"></rect>
+        <rect width="1.99" height="17.91" rx=".99" transform="matrix(-.71068 -.70352 .71068 -.70352 2.41 15)"></rect>
+    </symbol>
 </svg>
