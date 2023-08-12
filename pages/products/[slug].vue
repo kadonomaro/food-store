@@ -13,7 +13,9 @@
     });
 
     onMounted(() => {
-        getProduct(slug);
+        if (!productDetail.value) {
+            getProduct(slug);
+        }
     });
 
     onBeforeUnmount(() => {
@@ -44,7 +46,12 @@
                 </aside>
             </div>
 
-            <div class="product-detail__similar"></div>
+            <div class="product-detail__similar">
+                <product-similar
+                    :product-id="productDetail.id"
+                    :category-id="productDetail.categoryId"
+                ></product-similar>
+            </div>
         </div>
     </div>
 </template>
@@ -66,9 +73,11 @@
     }
 
     .product-detail__inner {
+        margin-bottom: 50px;
         @include media($bp-desktop-sm) {
             display: flex;
             align-items: flex-start;
+            margin-bottom: 100px;
         }
     }
 

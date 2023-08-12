@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { IReview } from "~/api/services/reviews/types";
+    import { useSwiper } from "~/composables/useSwiper";
 
     type Props = {
         reviews: IReview[];
@@ -8,16 +9,7 @@
 
     defineProps<Props>();
 
-    const swiperOptions = {
-        991: {
-            slidesPerView: 4,
-            spaceBetween: 20,
-            navigation: {
-                prevEl: ".js-reviews-slider-prev",
-                nextEl: ".js-reviews-slider-next",
-            },
-        },
-    };
+    const { swiperOptions } = useSwiper("reviews");
 </script>
 
 <template>

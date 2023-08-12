@@ -24,7 +24,7 @@
     });
 
     onMounted(async () => {
-        if (activeCategoryId.value.length > 0) {
+        if (products.value.length === 0 || activeCategoryId.value.length > 0) {
             await getProductsWithQuery();
         }
 

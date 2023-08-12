@@ -18,7 +18,7 @@
 
     onMounted(async () => {
         if (categories.value.length === 0) {
-            await getCategoriesList();
+            await getCategoriesList({ order: "fields.sort" });
         }
     });
 </script>
