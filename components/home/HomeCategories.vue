@@ -9,14 +9,14 @@
     defineProps<Props>();
     const emit = defineEmits(["on-select"]);
 
-    const { categories, activeCategory } = storeToRefs(useCategoriesStore());
+    const { categories, activeCategoryId } = storeToRefs(useCategoriesStore());
     const { getCategoriesList, setActiveCategory } = useCategoriesStore();
 
     const isLoading = ref(false);
 
     const onSelectCategory = (id: string) => {
         setActiveCategory(id);
-        emit("on-select", id);
+        emit("on-select");
     };
 
     const getCategoriesWithQuery = () => {
@@ -41,7 +41,7 @@
         <div class="home-categories__list">
             <button
                 class="home-categories__button"
-                :class="{ 'is-active': activeCategory === '' }"
+                :class="{ 'is-active': activeCategoryId === '' }"
                 :disabled="isDisabled"
                 @click="onSelectCategory('')"
             >
@@ -53,7 +53,7 @@
                 v-for="category in categories"
                 :key="category.id"
                 class="home-categories__button"
-                :class="{ 'is-active': activeCategory === category.id }"
+                :class="{ 'is-active': activeCategoryId === category.id }"
                 :disabled="isDisabled"
                 @click="onSelectCategory(category.id)"
             >
@@ -108,6 +108,7 @@
         &.is-active {
             background-color: #fff;
             cursor: auto;
+            pointer-events: none;
         }
         @include media($bp-desktop-sm) {
             flex-grow: 1;

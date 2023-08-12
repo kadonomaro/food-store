@@ -1,19 +1,20 @@
 <script setup lang="ts">
     import { storeToRefs } from "pinia";
-    import { useProductsStore, useReviewsStore } from "~/store";
+    import { useCategoriesStore, useProductsStore, useReviewsStore } from "~/store";
     import { useMeta } from "~/composables/useMeta";
 
     const { products } = storeToRefs(useProductsStore());
     const { reviews } = storeToRefs(useReviewsStore());
+    const { activeCategoryId } = storeToRefs(useCategoriesStore());
     const { getProductsList } = useProductsStore();
     const { getReviewsList } = useReviewsStore();
 
     const isLoadingProducts = ref(false);
     const isLoadingReviews = ref(false);
 
-    const onSelectCategory = async (categoryId: string) => {
+    const getProductsWithQuery = async () => {
         isLoadingProducts.value = true;
-        const query = categoryId ? { "fields.category.sys.id[in]": categoryId } : undefined;
+        const query = activeCategoryId.value ? { "fields.category.sys.id[in]": activeCategoryId.value } : undefined;
         await getProductsList(query);
         isLoadingProducts.value = false;
     };
@@ -23,10 +24,8 @@
     });
 
     onMounted(async () => {
-        if (products.value.length === 0) {
-            isLoadingProducts.value = true;
-            await getProductsList();
-            isLoadingProducts.value = false;
+        if (activeCategoryId.value.length > 0) {
+            await getProductsWithQuery();
         }
 
         if (reviews.value.length === 0) {
@@ -49,7 +48,7 @@
 
         <div class="home-page__categories">
             <div class="container">
-                <home-categories :is-disabled="isLoadingProducts" @on-select="onSelectCategory"></home-categories>
+                <home-categories :is-disabled="isLoadingProducts" @on-select="getProductsWithQuery"></home-categories>
             </div>
         </div>
 

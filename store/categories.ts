@@ -4,13 +4,13 @@ import { ICategory } from "~/api/services/categories/types";
 
 type StoreType = {
     categories: ICategory[];
-    activeCategory: string;
+    activeCategoryId: string;
 };
 
 export const useCategoriesStore = defineStore("categories", {
     state: (): StoreType => ({
         categories: [],
-        activeCategory: "",
+        activeCategoryId: "",
     }),
     actions: {
         getCategoriesList(query?: object) {
@@ -20,7 +20,7 @@ export const useCategoriesStore = defineStore("categories", {
             });
         },
         setActiveCategory(id: string) {
-            this.activeCategory = id;
+            this.activeCategoryId = id;
         },
     },
 });
