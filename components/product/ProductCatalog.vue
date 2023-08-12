@@ -65,7 +65,7 @@
         flex-basis: calc(50% - 10px);
         max-width: calc(50% - 10px);
         margin: 0 5px 10px;
-        background-color: #fff;
+        background-color: rgba(#acbccc, 0.1);
         border-radius: var(--border-radius--md);
         &::before {
             content: "";

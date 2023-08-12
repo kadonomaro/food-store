@@ -14,9 +14,12 @@
     .the-logo {
         position: relative;
         display: block;
-        height: 50px;
+        height: 40px;
         img {
             height: 100%;
+        }
+        @include media($bp-desktop-sm) {
+            height: 50px;
         }
     }
 </style>
