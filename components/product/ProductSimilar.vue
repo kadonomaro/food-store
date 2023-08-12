@@ -1,5 +1,6 @@
 <script setup lang="ts">
     import { api } from "~/api";
+    import { buildQuery } from "~/utils";
     import { IProduct } from "~/api/services/products/types";
     import { useSwiper } from "~/composables/useSwiper";
 
@@ -15,7 +16,7 @@
     const { swiperOptions } = useSwiper("productSimilar");
 
     const getProductList = async () => {
-        const query = { "sys.id[nin]": productId, "fields.category.sys.id[in]": categoryId };
+        const query = buildQuery({ "sys.id[nin]": productId, "fields.category.sys.id[in]": categoryId });
         productsList.value = await api.products.getAll(query);
     };
 

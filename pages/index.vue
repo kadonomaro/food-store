@@ -1,7 +1,8 @@
 <script setup lang="ts">
     import { storeToRefs } from "pinia";
-    import { useCategoriesStore, useProductsStore, useReviewsStore } from "~/store";
+    import { buildQuery } from "~/utils";
     import { useMeta } from "~/composables/useMeta";
+    import { useCategoriesStore, useProductsStore, useReviewsStore } from "~/store";
 
     const { products } = storeToRefs(useProductsStore());
     const { reviews } = storeToRefs(useReviewsStore());
@@ -14,13 +15,13 @@
 
     const getProductsWithQuery = async () => {
         isLoadingProducts.value = true;
-        const query = activeCategoryId.value ? { "fields.category.sys.id[in]": activeCategoryId.value } : undefined;
+        const query = buildQuery({ "fields.category.sys.id[in]": activeCategoryId.value, order: "fields.price" });
         await getProductsList(query);
         isLoadingProducts.value = false;
     };
 
     onServerPrefetch(() => {
-        return Promise.all([getProductsList(), getReviewsList({ order: "-fields.date" })]);
+        return Promise.all([getProductsWithQuery(), getReviewsList({ order: "-fields.date" })]);
     });
 
     onMounted(async () => {

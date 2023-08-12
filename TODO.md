@@ -1,0 +1,4 @@
+- Search products
+- TheFooterTop component
+- About section in home page
+- Delivery page

@@ -13,7 +13,7 @@ export class BaseService<T> {
         this.client = contentfulClient;
     }
 
-    getOne(slug: string) {
+    getOne(slug: string): Promise<T> {
         return this.client.getEntries({ content_type: this.type, "fields.slug[in]": slug }).then(({ items }) => {
             return this.mapper.getOne(items[0]);
         });

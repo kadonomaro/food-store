@@ -19,3 +19,13 @@ export const formatDate = (date: string) => {
         year: "numeric",
     });
 };
+
+export const buildQuery = (query: Record<string, string>) => {
+    const result: Record<string, string> = {};
+    Object.keys(query).forEach((key) => {
+        if (query[key].length > 0) {
+            result[key] = query[key];
+        }
+    });
+    return result;
+};

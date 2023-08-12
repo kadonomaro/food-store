@@ -3,7 +3,6 @@
 export default defineNuxtConfig({
     components: [{ path: "~/components", pathPrefix: false }],
     modules: ["@pinia/nuxt", "nuxt-swiper"],
-    devtools: { enabled: true },
     typescript: {
         typeCheck: true,
     },
