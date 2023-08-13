@@ -2,6 +2,7 @@
     const navigationList = [
         { title: "Каталог", name: "index", hash: "#catalog" },
         { title: "Отзывы", name: "index", hash: "#reviews" },
+        { title: "Доставка", name: "index", hash: "" },
     ];
 </script>
 

@@ -125,7 +125,7 @@
                     opacity: 1;
                 }
                 .home-categories__image {
-                    transform: translateY(-5px);
+                    transform: translateY(-5px) rotate(3deg);
                 }
             }
             &::before {

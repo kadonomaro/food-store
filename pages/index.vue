@@ -64,6 +64,12 @@
                 <home-reviews :reviews="reviews" :is-loading="isLoadingReviews"></home-reviews>
             </div>
         </div>
+
+        <div class="home-page__about">
+            <div class="container">
+                <home-about></home-about>
+            </div>
+        </div>
     </div>
 </template>
 

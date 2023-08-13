@@ -107,7 +107,7 @@
         letter-spacing: -0.03em;
         text-decoration: none;
         @include media($bp-desktop-sm) {
-            font-size: 28px;
+            font-size: 24px;
             line-height: 32px;
         }
     }

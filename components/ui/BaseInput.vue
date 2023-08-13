@@ -20,7 +20,7 @@
             :value="modelValue"
             type="text"
             :placeholder="placeholder"
-            @input="emit('update:modelValue', $event.target.value)"
+            @input="emit('update:modelValue', ($event.target as HTMLInputElement).value)"
             @focus="emit('focus')"
         />
         <base-icon
@@ -44,7 +44,7 @@
         font-size: 12px;
         line-height: 12px;
         font-weight: 500;
-        border: 2px solid var(--secondary-color);
+        border: 2px solid #e6ebf0;
         border-radius: 12px;
         transition: border-color 0.2s ease-in;
         outline: none;
@@ -54,7 +54,7 @@
         &:hover,
         &:focus,
         &:not(:placeholder-shown) {
-            border-color: darken(#acbccc, 10%);
+            border-color: darken(#e6ebf0, 10%);
         }
         @include media($bp-desktop-sm) {
             font-size: 16px;
