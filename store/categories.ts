@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { api } from "~/api";
+import { Query } from "~/api/types";
 import { ICategory } from "~/api/services/categories/types";
 
 type StoreType = {
@@ -13,7 +14,7 @@ export const useCategoriesStore = defineStore("categories", {
         activeCategoryId: "",
     }),
     actions: {
-        getCategoriesList(query?: object) {
+        getCategoriesList(query?: Query) {
             return api.categories.getAll(query).then((categories) => {
                 this.categories = categories;
                 return categories;

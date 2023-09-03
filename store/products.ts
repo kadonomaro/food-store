@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { api } from "~/api";
+import { Query } from "~/api/types";
 import { IProduct } from "~/api/services/products/types";
 
 type StoreType = {
@@ -22,7 +23,7 @@ export const useProductsStore = defineStore("products", {
         clearProduct() {
             this.productDetail = null;
         },
-        getProductsList(query?: object) {
+        getProductsList(query?: Query) {
             return api.products.getAll(query).then((products) => {
                 this.products = products;
                 return products;

@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { api } from "~/api";
+import { Query } from "~/api/types";
 import { IReview } from "~/api/services/reviews/types";
 
 type StoreType = {
@@ -11,7 +12,7 @@ export const useReviewsStore = defineStore("reviews", {
         reviews: [],
     }),
     actions: {
-        getReviewsList(query?: object) {
+        getReviewsList(query?: Query) {
             return api.reviews.getAll(query).then((reviews) => {
                 this.reviews = reviews;
                 return reviews;

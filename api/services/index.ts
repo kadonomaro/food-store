@@ -1,6 +1,7 @@
 import { ContentfulClientApi } from "contentful";
 import { contentfulClient } from "~/api/services/client";
 import { IMapper } from "~/api/mapping";
+import { Query } from "~/api/types";
 
 export class BaseService<T> {
     private type: string;
@@ -14,12 +15,24 @@ export class BaseService<T> {
     }
 
     getOne(slug: string): Promise<T> {
-        return this.client.getEntries({ content_type: this.type, "fields.slug[in]": slug }).then(({ items }) => {
-            return this.mapper.getOne(items[0]);
-        });
+        return this.client
+            .getEntries({ content_type: this.type, "fields.slug[in]": slug })
+            .then(({ items }) => {
+                return this.mapper.getOne(items[0]);
+            })
+            .catch((error: Error) => {
+                console.error(error.message);
+                return null;
+            });
     }
 
-    getAll(query?: object): Promise<T[]> {
-        return this.client.getEntries({ content_type: this.type, ...query }).then(this.mapper.getAll);
+    getAll(query?: Query): Promise<T[]> {
+        return this.client
+            .getEntries({ content_type: this.type, ...query })
+            .then(this.mapper.getAll)
+            .catch((error: Error) => {
+                console.error(error.message);
+                return [];
+            });
     }
 }
