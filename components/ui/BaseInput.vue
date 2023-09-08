@@ -70,6 +70,10 @@
         height: 20px;
         fill: var(--secondary-color);
         transform: translateY(-50%);
+        transition: fill 0.2s ease-in;
         cursor: pointer;
+        &:hover {
+            fill: var(--primary-text);
+        }
     }
 </style>

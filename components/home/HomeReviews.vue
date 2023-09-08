@@ -17,10 +17,10 @@
         <div class="home-reviews__header">
             <h2 class="home-reviews__title page-title">Отзывы</h2>
             <div class="home-reviews__navigation">
-                <button class="home-reviews__prev js-reviews-slider-prev">
+                <button class="home-reviews__arrow js-reviews-slider-prev">
                     <base-icon name="arrow"></base-icon>
                 </button>
-                <button class="home-reviews__next js-reviews-slider-next">
+                <button class="home-reviews__arrow is-next js-reviews-slider-next">
                     <base-icon name="arrow"></base-icon>
                 </button>
             </div>
@@ -88,17 +88,26 @@
         }
     }
 
-    .home-reviews__prev,
-    .home-reviews__next {
+    .home-reviews__arrow {
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
+        width: 40px;
+        height: 40px;
         margin: 0 3px;
         background-color: var(--primary-background);
         border-radius: 8px;
-        transition: opacity 0.2s ease-in;
+        transition:
+            opacity 0.2s ease-in,
+            background-color 0.2s ease-in;
+        &.is-next {
+            svg {
+                transform: scale(-1);
+            }
+        }
+        &:hover:not(:disabled) {
+            background-color: var(--primary-background--hover);
+        }
         &:disabled {
             opacity: 0.5;
         }
@@ -106,12 +115,6 @@
             width: 20px;
             height: 20px;
             fill: #25323f;
-        }
-    }
-
-    .home-reviews__next {
-        svg {
-            transform: scale(-1);
         }
     }
 </style>

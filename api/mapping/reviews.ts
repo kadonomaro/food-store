@@ -19,6 +19,4 @@ const mapReviewList = (response: any) => {
 export const reviewsMapper: IMapper = {
     getOne: mapReview,
     getAll: mapReviewList,
-    create: mapReview,
-    update: mapReview,
 };

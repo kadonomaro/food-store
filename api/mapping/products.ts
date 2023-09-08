@@ -22,6 +22,4 @@ const mapProductList = (response: any) => {
 export const productsMapper: IMapper = {
     getOne: mapProduct,
     getAll: mapProductList,
-    create: mapProduct,
-    update: mapProduct,
 };

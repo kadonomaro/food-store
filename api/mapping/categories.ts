@@ -19,6 +19,4 @@ const mapCategoriesList = (response: any) => {
 export const categoriesMapper: IMapper = {
     getOne: mapCategory,
     getAll: mapCategoriesList,
-    create: mapCategory,
-    update: mapCategory,
 };

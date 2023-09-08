@@ -3,8 +3,6 @@ import { getDeepObject } from "~/utils";
 export interface IMapper {
     getOne: (response: any) => any;
     getAll: (response: any) => any;
-    create: (response: any) => any;
-    update: (response: any) => any;
 }
 
 export const mapObjectResponse = (response: any, map: any) => {
